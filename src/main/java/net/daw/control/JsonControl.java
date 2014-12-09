@@ -50,6 +50,7 @@ import net.daw.control.operation.specific.implementation.DetallePedidoControlOpe
 import net.daw.control.operation.specific.implementation.MensajeprivadoControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.PostControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.ProveedorControlOperationSpImpl;
+import net.daw.control.operation.specific.implementation.PublicacionControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.TemaControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.TipoproductoControlOperationSpImpl;
 import net.daw.control.route.generic.specific.implementation.CuestionarioControlRouteGenSpImpl;
@@ -74,6 +75,7 @@ import net.daw.control.route.specific.implementation.PostControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.DetallePedidoControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.ImpuestoControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.ProveedorControlRouteSpImpl;
+import net.daw.control.route.specific.implementation.PublicacionControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.TemaControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.TipoproductoControlRouteSpImpl;
 import net.daw.helper.EstadoHelper;
@@ -173,8 +175,8 @@ public class JsonControl extends HttpServlet {
                         jsonResult = oAmigoRoute.execute(request, oAmigoControlOperation);
                         break;
                     case "publicacion":
-                        PublicacionControlRouteGenSpImpl oPublicacionRoute = new PublicacionControlRouteGenSpImpl();
-                        PublicacionControlOperationGenSpImpl oPublicacionControlOperation = new PublicacionControlOperationGenSpImpl(request);
+                        PublicacionControlRouteSpImpl oPublicacionRoute = new PublicacionControlRouteSpImpl();
+                        PublicacionControlOperationSpImpl oPublicacionControlOperation = new PublicacionControlOperationSpImpl(request);
                         jsonResult = oPublicacionRoute.execute(request, oPublicacionControlOperation);
                         break;
                     case "post":

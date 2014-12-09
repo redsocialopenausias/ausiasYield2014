@@ -16,11 +16,24 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-var publicacionModel = function (strClase) {
+var redsocialperfilModel = function (strClase) {
     this.clase = strClase;
 };
-publicacionModel.prototype = new model('publicacion');
-publicacionModel.prototype.getClassNamePublicacion = function () {
+redsocialperfilModel.prototype = new model('publicacion');
+redsocialperfilModel.prototype.getClassNameRedsocialperfil = function () {
     return this.getClassName() + "Modelo";
 };
-var oPublicacionModel = new publicacionModel('publicacion');
+redsocialperfilModel.prototype.duplicateOne = function (id) {
+    $.when(ajax().ajaxCallSync(this.urlJson + '&op=duplicate&id=' + id, 'GET', '')).done(function (data) {
+        feedback = data;
+    });
+    return feedback;
+};
+var oRedsocialperfilModel = new redsocialperfilModel('publicacion');
+
+redsocialperfilModel.prototype.getOne = function (id_usuario) {
+    $.when(ajax().ajaxCallSync(this.urlJson + '&op=get&id_usuario=' + id_usuario, 'GET', '')).done(function (data) {
+        one = data;
+    });
+    return one;
+};

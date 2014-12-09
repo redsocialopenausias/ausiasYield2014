@@ -17,67 +17,75 @@
  */
 
 
-function fPublicacionRoutes() {
+function fRedsocialperfilRoutes() {
 
-//    Path.map("#/publicacion").to(function () {
+//    Path.map("#/redsocialperfil").to(function () {
 //        $('#indexContenidoJsp').spinner();
-//        control('publicacion').list($('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);
-//        //publicacionControl.modalListEventsLoading(publicacionObject, publicacionView, $('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);        
+//        control('redsocialperfil').list($('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);
+//        //redsocialperfilControl.modalListEventsLoading(redsocialperfilObject, redsocialperfilView, $('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);        
 //        $('#indexContenidoJsp').empty();
 //        return false;
 //    });
 
-    Path.map("#/publicacion").to(function () {
+    Path.map("#/redsocialperfil").to(function () {
         $('#indexContenidoJsp').spinner();
-        oPublicacionControl.list($('#indexContenido'), param().defaultizeUrlObjectParameters({}), null, oPublicacionModel, oPublicacionView);
-        //publicacionControl.modalListEventsLoading(publicacionObject, publicacionView, $('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);        
+        oRedsocialperfilControl.list($('#indexContenido'), param().defaultizeUrlObjectParameters({}), null, oRedsocialperfilModel, oRedsocialperfilView);
+        //redsocialperfilControl.modalListEventsLoading(redsocialperfilObject, redsocialperfilView, $('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);        
         $('#indexContenidoJsp').empty();
-        //$('#indexContenidoJsp').append(oPublicacionControl.getClassNamePublicacion());
+        $('#indexContenidoJsp').append(oRedsocialperfilControl.getClassNameRedsocialperfil());
         return false;
     });
 
-    Path.map("#/publicacion/list/:url").to(function () {
+    Path.map("#/redsocialperfil/list/:url").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPublicacionControl.list($('#indexContenido'), paramsObject, null, oPublicacionModel, oPublicacionView);
+        oRedsocialperfilControl.list($('#indexContenido'), paramsObject, null, oRedsocialperfilModel, oRedsocialperfilView);
         $('#indexContenidoJsp').empty();
         return false;
     });
 
-    Path.map("#/publicacion/view/:id").to(function () {
+    Path.map("#/redsocialperfil/view/:id").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPublicacionControl.view($('#indexContenido'), paramsObject['id'], oPublicacionModel, oPublicacionView);
+        oRedsocialperfilControl.view($('#indexContenido'), paramsObject['id'], oRedsocialperfilModel, oRedsocialperfilView);
         $('#indexContenidoJsp').empty();
 
         return false;
     });
 
-    Path.map("#/publicacion/edit/:id").to(function () {
+    Path.map("#/redsocialperfil/edit/:id").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPublicacionControl.edit($('#indexContenido'), paramsObject['id'], oPublicacionModel, oPublicacionView);
+        oRedsocialperfilControl.edit($('#indexContenido'), paramsObject['id'], oRedsocialperfilModel, oRedsocialperfilView);
         $('#indexContenidoJsp').empty();
     });
-    Path.map("#/publicacion/new").to(function () {
+    Path.map("#/redsocialperfil/new").to(function () {
         $('#indexContenidoJsp').spinner();
         //var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPublicacionControl.new($('#indexContenido'), null, oPublicacionModel, oPublicacionView);
+        oRedsocialperfilControl.new($('#indexContenido'), null, oRedsocialperfilModel, oRedsocialperfilView);
         $('#indexContenidoJsp').empty();
         return false;
     });
-    Path.map("#/publicacion/new/:url").to(function () {
+    Path.map("#/redsocialperfil/new/:url").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPublicacionControl.new($('#indexContenido'), paramsObject, oPublicacionModel, oPublicacionView);
+        oRedsocialperfilControl.new($('#indexContenido'), paramsObject, oRedsocialperfilModel, oRedsocialperfilView);
         $('#indexContenidoJsp').empty();
         return false;
     });
 
-    Path.map("#/publicacion/remove/:id").to(function () {
+    Path.map("#/redsocialperfil/remove/:id").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPublicacionControl.remove($('#indexContenido'), paramsObject['id'], oPublicacionModel, oPublicacionView);
+        oRedsocialperfilControl.remove($('#indexContenido'), paramsObject['id'], oRedsocialperfilModel, oRedsocialperfilView);
+        $('#indexContenidoJsp').empty();
+        return false;
+    });
+
+    Path.map("#/redsocialperfil/duplicate/:id").to(function () {
+        $('#indexContenidoJsp').spinner();
+        var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
+        oRedsocialperfilControl.duplicate($('#indexContenido'), paramsObject['id'], oRedsocialperfilModel, oRedsocialperfilView);
         $('#indexContenidoJsp').empty();
         return false;
     });
