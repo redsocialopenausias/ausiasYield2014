@@ -59,11 +59,7 @@ public class PublicacionDaoSpcImpl implements ViewDaoInterface<PublicacionBeanGe
     public int getPages(int intRegsPerPag, ArrayList<FilterBeanHelper> hmFilter) throws Exception {
         int pages = 0;
         try {
-            if (strTableName.substring(0, 6).equalsIgnoreCase("SELECT")) {
-                pages = oMysql.getPages(strTableName, intRegsPerPag);
-            } else {
-                pages = oMysql.getPages(strPojo, intRegsPerPag, hmFilter);
-            }
+                 pages = oMysql.getPages(strTableName, intRegsPerPag, hmFilter);
 
         } catch (Exception ex) {
             ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getPages ERROR: " + ex.getMessage()));
@@ -75,11 +71,7 @@ public class PublicacionDaoSpcImpl implements ViewDaoInterface<PublicacionBeanGe
     public int getCount(ArrayList<FilterBeanHelper> hmFilter) throws Exception {
         int pages = 0;
         try {
-            if (strTableName.substring(0, 6).equalsIgnoreCase("SELECT")) {
-            pages = oMysql.getCount(strTableName);
-            } else {
-            pages = oMysql.getCount(strPojo, hmFilter);
-            }
+            pages = oMysql.getCount(strTableName, hmFilter);
         } catch (Exception ex) {
             ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getCount ERROR: " + ex.getMessage()));
         }
@@ -91,11 +83,8 @@ public class PublicacionDaoSpcImpl implements ViewDaoInterface<PublicacionBeanGe
         ArrayList<Integer> arrId;
         ArrayList<PublicacionBeanGenSpImpl> arrPublicacion = new ArrayList<>();
         try {
-            if (strTableName.substring(0, 6).equalsIgnoreCase("SELECT")) {
-                arrId = oMysql.getPage(strTableName, intRegsPerPag, intPage);
-            } else {
-                arrId = oMysql.getPage(strPojo, intRegsPerPag, intPage, hmFilter, hmOrder);
-            }
+                arrId = oMysql.getPage(strTableName, intRegsPerPag, intPage, hmFilter, hmOrder);
+            
             Iterator<Integer> iterador = arrId.listIterator();
             while (iterador.hasNext()) {
                 PublicacionBeanGenSpImpl oPublicacionBean = new PublicacionBeanGenSpImpl(iterador.next());
@@ -126,7 +115,7 @@ public class PublicacionDaoSpcImpl implements ViewDaoInterface<PublicacionBeanGe
 
                         UsuarioBeanGenSpImpl oUsuario = new UsuarioBeanGenSpImpl();
                         oUsuario.setId(Integer.parseInt(oMysql.getOne(strPojo, "id_usuario", oPublicacionBean.getId())));
-                        UsuarioDaoGenSpImpl oUsuarioDAO = new UsuarioDaoGenSpImpl("usuario", "usuario", oConnection);
+                        UsuarioDaoGenSpImpl oUsuarioDAO = new UsuarioDaoGenSpImpl("usuario", oConnection);
                         oUsuario = oUsuarioDAO.get(oUsuario, AppConfigurationHelper.getJsonDepth());
                         oUsuario.setPassword(null);
                         oPublicacionBean.setObj_usuario(oUsuario);
